@@ -7,21 +7,21 @@ We implemented a serverless system using AWS Lambda, Amazon EventBridge, and Ama
 
 # Steps to Resolution:
 
-**Step 01** Identify the API KEY
+# Step 01 Identify the API KEY
 Identify the API KEY that you want to monitor (eg: da2-bnpchjhesffrfjleqdxknk87yd).
 
-**Step 02** Step Up the SNS topic
+# Step 02 Step Up the SNS topic
 Create a SNS topic and add the subscriptions to the topic for the intended recipients.
 
-**Step 03** Set Up Lambda function 
+# Step 03 Set Up Lambda function 
 1. Create a Lambda function to interact with the AppSync service using list_api_keys API to fetch API key details.
 2. Provide the IAM permission to the lambda function. (SNS publish & AppsyncApilist)
 3. Write the Python code (Provided in the code file), deploy it and then test it.
 
-**Step 04** Configure the Event Bridge to trigger the lambda function
+# Step 04 Configure the Event Bridge to trigger the lambda function
 Create an EventBridge rule to set to trigger the Lambda function periodically (e.g., Once in a week) to monitor the API key status. If the key is going to expire in given parameter then it will send you an alert. 
 
-**Steo 05** Test the system
+# Step 05 Test the system
 Test the Event bridge on a short time duration (e.g, Every 1 minute) to trigger lambda function to ensure it can detect the API key, calculate days to expiry, and send notifications via SNS.
 
 In case of Error you can check Lambda logs and verify the configuration and IAM permission attached to lambda function. 
